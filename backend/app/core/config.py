@@ -1,5 +1,6 @@
 import logging
 from pathlib import Path
+from urllib.parse import quote_plus
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -57,9 +58,11 @@ class Settings(BaseSettings):
 
     @property
     def postgres_url(self) -> str:
+        encoded_password = quote_plus(self.postgres_password)
         return (
-            f"postgresql+psycopg2://{self.postgres_user}:{self.postgres_password}"
+            f"postgresql+psycopg2://{self.postgres_user}:{encoded_password}"
             f"@{self.postgres_host}:{self.postgres_port}/{self.postgres_db}"
+            f"?sslmode=require"
         )
 
     @staticmethod
