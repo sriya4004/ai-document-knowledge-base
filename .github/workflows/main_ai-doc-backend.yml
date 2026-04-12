@@ -9,12 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-
-    defaults:
-      run:
-        working-directory: backend   # backend folder me run hoga
 
     steps:
       - uses: actions/checkout@v4
@@ -28,38 +22,26 @@ jobs:
         run: |
           python -m venv antenv
           source antenv/bin/activate
-          pip install -r requirements.txt
+          pip install -r requirements.txt   # ✅ अब root से उठेगा
 
-      # ✅ IMPORTANT FIX
-      - name: Upload artifact for deployment jobs
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: python-app
-          path: backend   # 🔥 backend folder hi deploy hoga
+          path: .
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    permissions:
-      id-token: write
-      contents: read
 
     steps:
-      - name: Download artifact from build job
+      - name: Download artifact
         uses: actions/download-artifact@v4
         with:
           name: python-app
 
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_C82E092F73DD41749ED7826C3F3178CC }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_E15135195E5E421F8C7BBFCE865C5317 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_89FFCB8680C641CE87B79758F6C77C4A }}
-
-      - name: Deploy to Azure Web App
+      - name: Deploy to Azure
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'ai-doc-backend'
-          slot-name: 'Production'
-          package: .   # artifact download ke baad yahi backend hoga
+          package: .
