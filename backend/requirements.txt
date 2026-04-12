@@ -1,0 +1,17 @@
+fastapi
+uvicorn[standard]
+python-multipart
+sqlalchemy
+psycopg2-binary
+alembic
+pydantic-settings
+chromadb
+openai
+tiktoken
+python-dotenv
+python-jose[cryptography]
+passlib[bcrypt]
+email-validator
+sentence-transformers
+gunicorn
+PyPDF2
