@@ -14,7 +14,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: backend   # ✅ backend folder me run hoga
+        working-directory: backend   # backend folder me run hoga
 
     steps:
       - uses: actions/checkout@v4
@@ -30,12 +30,12 @@ jobs:
           source antenv/bin/activate
           pip install -r requirements.txt
 
-      # ✅ FIXED ARTIFACT (IMPORTANT)
+      # ✅ IMPORTANT FIX
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
         with:
           name: python-app
-          path: .   # ✅ pura repo upload hoga (safe)
+          path: backend   # 🔥 backend folder hi deploy hoga
 
   deploy:
     runs-on: ubuntu-latest
@@ -62,4 +62,4 @@ jobs:
         with:
           app-name: 'ai-doc-backend'
           slot-name: 'Production'
-          package: .   # ✅ artifact root se deploy hoga
+          package: .   # artifact download ke baad yahi backend hoga
