@@ -467,3 +467,4 @@ See [DEPLOY_AZURE.md](DEPLOY_AZURE.md) for:
 - Dashboard: add `docs/screenshots/dashboard.png`
 - Search: add `docs/screenshots/search.png`
 - Upload: add `docs/screenshots/upload.png`
+"update" 
