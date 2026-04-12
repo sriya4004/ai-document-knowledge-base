@@ -29,14 +29,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: python-app
-          path: backend
+          path: backend   # ✅ correct
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
 
     permissions:
-      id-token: write   # ✅ THIS FIXES YOUR ERROR
+      id-token: write
       contents: read
 
     steps:
@@ -57,4 +57,4 @@ jobs:
         with:
           app-name: 'ai-doc-backend'
           slot-name: 'Production'
-          package: .
+          package: backend   # ✅ FINAL FIX
