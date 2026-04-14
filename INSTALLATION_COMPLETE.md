@@ -2,23 +2,6 @@
 
 ## Status: ✅ PRODUCTION READY
 
-Your AI-Powered Document Knowledge Base is now **fully fixed** and ready to use!
-
----
-
-## 📚 Documentation Files
-
-| File | Purpose | Time |
-|------|---------|------|
-| **QUICKSTART.md** | Get running in 3 steps | 5 min |
-| **SETUP_GUIDE.md** | Detailed setup & troubleshooting | 15 min |
-| **VERIFICATION_CHECKLIST.md** | Verify everything works | 10 min |
-| **README.md** | Complete project overview | Reference |
-
-**👉 Start with: QUICKSTART.md**
-
----
-
 ## 🚀 Quick Start (TL;DR)
 
 ### Windows
